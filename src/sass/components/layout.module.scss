@@ -1,0 +1,99 @@
+@use "./../theme/__variables" as *;
+
+.light {
+  
+    background: linear-gradient(45deg,  $base-bg 60%, $accent-bg);
+
+    .logo{
+        color: $font-secondary;
+    }
+
+    .links{
+        color: $font-secondary;
+    }
+}
+.dark {
+
+    background: linear-gradient(45deg,  $purple-400 60%, $purple-700);
+    
+    .logo{
+        color: $font-primary;
+    }
+
+    .links{
+        color: $font-primary;
+    }
+
+
+}
+
+.header {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.logo-box {
+  width: 40%;
+  margin: 0px;
+  display: flex;
+  height: 100%;
+  span{
+    display: block;
+    margin: auto;
+  }
+}
+
+.logo {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    
+    @media screen and(max-width: 600px){
+        text-align: left;
+    }
+}
+
+.links {
+    text-decoration: none;
+}
+
+.links-xl {
+    display: none;
+    li{
+       text-align: center;
+    }
+    @media screen and (min-width: 601px) {
+        display: flex;
+
+        ul{
+            margin: auto;
+        }
+    }
+}
+
+.button-menu{
+    display: none;
+    margin-left: auto;
+    margin-right: 5%;
+    border-radius: 25%;
+    width: 2.8rem;
+    height: 3rem;
+    box-shadow: 4px 3px 8px rgba($color: #000000, $alpha: 0.2);
+    background-color: $base-button;
+    @media screen and (max-width: 600px) {
+        display: inline-block;
+    }
+
+    span{
+        display: block;
+        width: 100%;
+        height: 0.3rem;
+        background-color: white;
+        margin: 0.2rem 0rem;
+    }
+}
+
+

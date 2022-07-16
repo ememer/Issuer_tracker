@@ -1,0 +1,125 @@
+@import "../theme/_variables";
+
+
+
+
+// .settings-title{
+//     margin: auto;
+//     width: 100%;
+//     text-align: left;
+//     font-size: 1.2em;
+//     padding-left: 0.6rem;
+//     padding-bottom: 0.5rem;
+//     border-bottom: 1px solid #CFD2CF;
+//     border-radius: 0.2rem;
+// }
+
+// .settings-box{
+//     display: grid;
+//     grid-template-columns: 30% 70%;
+//     padding: 0.5rem 0.2rem;
+// }
+
+// .font-box{
+//     width: 100%;
+//     border:1px solid #CFD2CF;
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-end;
+// }
+
+// .user-avatar{
+//     border: 2px solid orange;
+//     border-radius: 100%;
+//     width: 50%;    
+//     position: relative;
+    
+//     img{
+//         border-radius: 100%;
+//         padding: 0.2rem;
+//         width: 100%;
+//         aspect-ratio: 1/1;
+
+//     }
+//     button{
+//         position: absolute;
+//         z-index: 10;
+//         bottom: 0;
+//         right: -10px;
+//         cursor: pointer;
+//         background: $base-button;
+//         border-radius: 10px;
+//         border: none;
+//         color: white;
+//     }
+//     .fontAwesome-User{
+//         font-size: 0.5rem;
+//     }
+// }
+
+// .avatar-menu{
+//     position: fixed;
+//     z-index: 10;
+//     width: 100%;
+//     .avatar-grid-box{
+//         background: #CFD2CF;
+//         margin: auto;
+//         border-radius: 10px;
+//         max-height: 40vh;
+//         max-width: 75%;
+//         padding: 0.5rem;
+//         display: grid;
+//         grid-template-columns: 25% 25% 25% 25%;
+//         gap: 0.2rem;
+//     }
+//     .avatar-box{
+//         width: 80%;
+//         padding: 2px;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         aspect-ratio: 1/1;
+//         overflow: hidden;
+//         border-radius: 50%;
+//         background-color: white;
+            
+//         img{
+//             max-width: 100%;
+//             max-height: 100%;
+//         }
+//     }
+// }
+
+// .close-avatar{
+//     height: 2rem;
+//     display: block;
+//     margin-left: auto ;
+//     margin-right: 15% ;
+//     margin-top: 0.5rem;
+//     border-radius: 5px;
+//     outline: none;
+//     background: $base-button;
+//     border: none;
+//     color: white;
+//     font-size: 0.8rem;
+// }
+
+// // @media only screen and (max-width: 600px) {
+   
+// // }
+
+// // @media only screen and (min-width: 600px) {
+
+// // }
+
+// // @media only screen and (min-width: 768px) {
+
+// // }
+
+// // @media only screen and (min-width: 992px) {
+
+// // }
+
+// // @media only screen and (min-width: 1200px) {
+
+// // }

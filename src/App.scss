@@ -1,0 +1,11 @@
+@use "./sass/configuration/_reset";
+@use "./sass/configuration/_googleFont";
+@use "./sass/theme/_theme";
+@use "./sass/configuration/_grid";
+@use "./sass/configuration/_elements";
+
+*, html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    box-sizing: border-box;
+}

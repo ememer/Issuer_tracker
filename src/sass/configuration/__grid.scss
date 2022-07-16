@@ -1,0 +1,33 @@
+$gutter: 10px;
+
+
+@mixin grid($cols) {
+  @media screen and (min-width: 600px) {
+    display: flex;
+    @for $i from 1 through $cols {
+      .grid-col-#{$i} {
+        flex: 0 0 calc(100% / $cols) * $i;
+      }
+    }
+  }
+}
+
+
+
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $gutter;
+  .grid-row {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+    [class*="grid-col-"] {
+      padding: 0 $gutter;
+    }
+
+    @include grid(12);
+  }
+}
