@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
-import style from "../sass/components/mobileMenu.module.scss";
+import "../sass/components/mobileMenu.scss";
+
 const MobileMenu = ({ links }) => {
   return (
-    <nav className={style["mobile-nav"]}>
-      <ul className={style.mobile}>
+    <nav className="mobile-nav">
+      <ul className="mobile">
         {links.map((link, index) => (
           <li title={link.describe} key={index}>
-            <Link className={style["nav-link"]} to={link.url}>
+            <Link className="nav-link" to={link.url}>
               {link.text}
             </Link>
           </li>

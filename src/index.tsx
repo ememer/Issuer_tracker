@@ -4,6 +4,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import App from "./App";
+import { ThemeProvider } from "./context/ThemeContext";
+import { UserProvider } from "./context/UserContext";
 import reportWebVitals from "./reportWebVitals";
 import Issues from "./routes/Issues";
 import Settings from "./routes/Settings";
@@ -15,13 +17,17 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/issues" element={<Issues />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/issues" element={<Issues />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

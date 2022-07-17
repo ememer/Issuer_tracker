@@ -2,29 +2,15 @@
 
 .light {
   
-    background: linear-gradient(45deg,  $base-bg 60%, $accent-bg);
+    background: linear-gradient(45deg,  $base-bg 20%, $accent-bg);
 
-    .logo{
+    .logo {
         color: $font-secondary;
     }
 
-    .links{
+    .links {
         color: $font-secondary;
     }
-}
-.dark {
-
-    background: linear-gradient(45deg,  $purple-400 60%, $purple-700);
-    
-    .logo{
-        color: $font-primary;
-    }
-
-    .links{
-        color: $font-primary;
-    }
-
-
 }
 
 .header {
@@ -36,7 +22,6 @@
 
 .logo-box {
   width: 40%;
-  margin: 0px;
   display: flex;
   height: 100%;
   span{

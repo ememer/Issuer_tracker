@@ -1,32 +1,32 @@
 import { useState } from "react";
 
-import clsx from "clsx";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
-import style from "../sass/components/layout.module.scss";
 import { links } from "../shared/navigation";
 
 import MobileMenu from "./MobileMenu";
+
+import "../sass/components/layout.scss";
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className={style.light}>
+    <>
       <Helmet>
         <title>Strona główna</title>
       </Helmet>
-      <div className="container">
-        <header className={clsx("grid-row", style.header)}>
-          <div className={clsx("grid-col-4", style["logo-box"])}>
-            <span className={style.logo}>Issues Tracker</span>
+      <div className="light container">
+        <header className="grid-row header">
+          <div className="grid-col-4 logo-box">
+            <span className="logo">Issues Tracker</span>
           </div>
-          <div className={clsx("grid-col-8", style["links-xl"])}>
+          <div className="grid-col-8 links-xl">
             <ul className="grid-row">
               {links.map((link, index) => (
                 <li className="grid-col-4" title={link.describe} key={index}>
-                  <Link className={style.links} to={link.url}>
+                  <Link className="links" to={link.url}>
                     {link.text}
                   </Link>
                 </li>
@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
           </div>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={style["button-menu"]}
+            className="button-menu"
           >
             <span></span>
             <span></span>
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
         </header>
       </div>
       <main className="container">{children}</main>
-    </div>
+    </>
   );
 };
 

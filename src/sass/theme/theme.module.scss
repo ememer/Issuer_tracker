@@ -1,0 +1,30 @@
+@use "../theme/__variables" as *;
+
+.light {
+  
+    background: linear-gradient(45deg,  $base-bg 60%, $accent-bg);
+
+    .logo {
+        color: $font-secondary;
+    }
+
+    .links {
+        color: $font-secondary;
+    }
+}
+
+
+.dark {
+
+    background: linear-gradient(45deg,  $purple-400 60%, $purple-700);
+    
+    .logo {
+        color: $font-primary;
+    }
+
+    .links {
+        color: $font-primary;
+    }
+
+
+}

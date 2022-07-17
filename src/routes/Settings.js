@@ -1,89 +1,46 @@
-import { useEffect, useState } from "react";
-
-import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
 
 import Layout from "../components/Layout";
-import { avatarLists } from "../shared/avatarsLists";
+import { UserContext } from "../context/UserContext";
+
+// const FONT_SIZES = {
+//   standard: "10px",
+//   medium: "12px",
+//   big: "1px",
+// };
+import image from "../Assets/avatar.jpg";
 
 import "../sass/components/settings.scss";
 
-const FONT_SIZES = {
-  standard: "10px",
-  medium: "16px",
-  big: "21px",
-};
-
 const Settings = () => {
-  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(1);
-  const [fontSize, setFontSize] = useState();
-
-  const findAvatar = (selectedId) => {
-    return avatarLists.find((avatar) => avatar.id === selectedId);
-  };
-
-  const onSelect = (e) => {
-    setSelectedAvatar(+e.target.id);
-    setIsAvatarMenuOpen(false);
-  };
-
-  useEffect(() => {
-    const html = document.querySelector("html");
-    if (fontSize === "2") {
-      html.style.fontSize = FONT_SIZES.big;
-    } else if (fontSize === "1") {
-      html.style.fontSize = FONT_SIZES.medium;
-    } else if (fontSize === "0") {
-      html.style.fontSize = FONT_SIZES.standard;
-    }
-  }, [fontSize]);
+  const { userName, setUserName } = useContext(UserContext);
 
   return (
     <Layout>
-      <h1 className="settings-title">App settings</h1>
-      <div className="settings-box">
-        <div className="user-avatar">
-          <img src={findAvatar(selectedAvatar)?.url} alt="User avatar" />
-          <button onClick={() => setIsAvatarMenuOpen(true)}>
-            <FontAwesomeIcon
-              className="fontAwesome-User"
-              icon={faHandPointer}
+      <div className="grid-row user">
+        <div className="grid-col-3 ">
+          <img src={image} alt="avatar" className="avatar" />
+        </div>
+        <div className="grid-col-9 user-area">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <label>
+              Twoja nazwa <span>*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Wpisz swoją nazwę!"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
             />
-          </button>
-        </div>
-        <div className="font-box">
-          <input
-            type="range"
-            min={0}
-            max={2}
-            name="fontSize"
-            value={fontSize}
-            onChange={(e) => setFontSize(e.target.value)}
-          />
-        </div>
-        {isAvatarMenuOpen && (
-          <div className="avatar-menu">
-            <div className="avatar-grid-box">
-              {avatarLists.map((avatar) => (
-                <div className="avatar-box" key={avatar.id}>
-                  <img
-                    onClick={(e) => onSelect(e)}
-                    id={avatar.id}
-                    src={avatar.url}
-                    alt=""
-                  />
+            {userName !== "" && userName.length >= 3 && (
+              <div className="grid-row">
+                <div className="grid-col-12 form-button">
+                  <button onClick={(e) => e.preventDefault()}>Ustaw</button>
                 </div>
-              ))}
-            </div>
-            <button
-              className="close-avatar"
-              onClick={() => setIsAvatarMenuOpen(false)}
-            >
-              Zamknij
-            </button>
-          </div>
-        )}
+              </div>
+            )}
+          </form>
+        </div>
       </div>
     </Layout>
   );
