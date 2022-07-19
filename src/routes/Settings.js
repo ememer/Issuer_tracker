@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import AvatarImage from "../components/AvatarImage";
 import AvatarPopup from "../components/AvatarPopup";
 import Layout from "../components/Layout";
 import { UserContext } from "../context/UserContext";
@@ -41,14 +42,10 @@ const Settings = () => {
       <div className="grid-row user">
         <div className="grid-col-3 avatar-section">
           <div className="avatar-group">
-            <img
+            <AvatarImage
+              photoAlt="User Photo"
               src={displayAvatar(avatar, avatarLists).url}
-              alt="avatar"
-              style={{
-                border: `0.3rem solid ${
-                  displayAvatar(avatar, avatarLists).border
-                }`,
-              }}
+              style={displayAvatar(avatar, avatarLists).border}
               className="avatar"
             />
             <button

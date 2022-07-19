@@ -2,6 +2,8 @@ import { useContext } from "react";
 
 import { UserContext } from "../context/UserContext";
 
+import AvatarImage from "./AvatarImage";
+
 import "../sass/components/avatarMenu.scss";
 
 const AvatarPopup = ({ onClose }) => {
@@ -30,12 +32,12 @@ const AvatarPopup = ({ onClose }) => {
                   className="grid-col-3"
                   id={avatar.id}
                 >
-                  <img
+                  <AvatarImage
                     id={avatar.id}
+                    photoAlt="User-Avatar"
                     className="avatar-choose"
                     src={avatar.url}
-                    alt="avatar"
-                    style={{ border: `0.3rem solid ${avatar.border}` }}
+                    style={avatar.border}
                   />
                 </button>
               ))}

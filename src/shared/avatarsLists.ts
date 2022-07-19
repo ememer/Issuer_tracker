@@ -1,4 +1,10 @@
-export const avatarLists = [
+interface List {
+  id: number;
+  url: () => void;
+  border: string;
+}
+
+export const avatarLists: List[] = [
   {
     id: 1,
     url: require("../Assets/1.jpg"),
@@ -7,7 +13,7 @@ export const avatarLists = [
   {
     id: 2,
     url: require("../Assets/1.jpg"),
-    border: "#F15412",
+    border: "#00FFAB",
   },
   {
     id: 3,
