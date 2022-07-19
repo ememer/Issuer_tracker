@@ -21,7 +21,8 @@ const Settings = () => {
   const { userName, setUserName, avatar, avatarLists } =
     useContext(UserContext);
   const [uiSize, setUiSize] = useState(1);
-  const [avatarMenu, setAvatarMenu] = useState(true);
+  const [avatarMenu, setAvatarMenu] = useState(false);
+  const [userNameInput, setUserNameInput] = useState(userName ?? "");
 
   useEffect(() => {
     const HTMLElement = document.querySelector("html");
@@ -34,7 +35,10 @@ const Settings = () => {
     }
   }, [uiSize]);
 
-  console.log();
+  const setNameOfUser = (e) => {
+    e.preventDefault();
+    setUserName(userNameInput);
+  };
 
   return (
     <Layout>
@@ -60,20 +64,20 @@ const Settings = () => {
           </div>
         </div>
         <div className="grid-col-9 user-area">
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={(e) => setNameOfUser(e)}>
             <label>
               Twoja nazwa <span>*</span>
             </label>
             <input
               type="text"
               placeholder="Wpisz swoją nazwę!"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={userNameInput}
+              onChange={(e) => setUserNameInput(e.target.value)}
             />
-            {userName !== "" && userName.length >= 3 && (
+            {userNameInput !== "" && userNameInput.length >= 3 && (
               <div className="grid-row">
                 <div className="grid-col-12 form-button">
-                  <button onClick={(e) => e.preventDefault()}>Ustaw</button>
+                  <button onClick={(e) => setNameOfUser(e)}>Ustaw</button>
                 </div>
               </div>
             )}
