@@ -1,9 +1,7 @@
-import React from "react";
-
 import Layout from "../components/Layout";
 
 const Issues = () => {
-  return <Layout>ISSUES</Layout>;
+  return <Layout></Layout>;
 };
 
 export default Issues;

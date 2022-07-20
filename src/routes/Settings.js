@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import AvatarImage from "../components/AvatarImage";
 import AvatarPopup from "../components/AvatarPopup";
+import Headline from "../components/Headline";
 import Layout from "../components/Layout";
 import { UserContext } from "../context/UserContext";
-import { displayAvatar } from "../shared/utlis/displayAvatar";
+import { displayAvatar } from "../shared/utils/displayAvatar";
 
 import "../sass/components/settings.scss";
 
@@ -22,7 +23,7 @@ const Settings = () => {
     useContext(UserContext);
   const [uiSize, setUiSize] = useState(1);
   const [avatarMenu, setAvatarMenu] = useState(false);
-  const [userNameInput, setUserNameInput] = useState(userName ?? "");
+  const [userNameInput, setUserNameInput] = useState(userName);
 
   useEffect(() => {
     const HTMLElement = document.querySelector("html");
@@ -38,12 +39,20 @@ const Settings = () => {
   const setNameOfUser = (e) => {
     e.preventDefault();
     setUserName(userNameInput);
+    setUserNameInput("");
   };
 
   return (
     <Layout>
       {avatarMenu && <AvatarPopup onClose={() => setAvatarMenu(false)} />}
       <div className="grid-row user">
+        <Headline
+          level={2}
+          headlineBG={true}
+          title="Sekcja użytkownika"
+          className="grid-col-12 headline-size"
+        />
+
         <div className="grid-col-3 avatar-section">
           <div className="avatar-group">
             <AvatarImage
@@ -63,7 +72,7 @@ const Settings = () => {
             </button>
           </div>
         </div>
-        <div className="grid-col-9 user-area">
+        <div className="grid-col-2 user-area">
           <form onSubmit={(e) => setNameOfUser(e)}>
             <label>
               Twoja nazwa <span>*</span>
@@ -85,6 +94,13 @@ const Settings = () => {
         </div>
       </div>
       <div className="grid-row facilitation">
+        <Headline
+          level={2}
+          headlineBG={true}
+          title="Wielkość interface'u"
+          className="grid-col-12 headline-size"
+        />
+
         <div className="grid-col-4">
           <div className="grid-row sizes">
             <button
