@@ -3,10 +3,6 @@
 .light {
   
     background: linear-gradient(45deg,  $base-bg 20%, $accent-bg);
-
-    .logo {
-        color: $font-secondary;
-    }
 }
 
 .header {
@@ -25,6 +21,7 @@
     font-weight: 700;
     font-size: 1.5rem;
     text-align: left;
+    color: $font-primary;
     @media screen and(max-width: 600px){
     }
 }
@@ -41,8 +38,6 @@
         }
     }
     
-
-
     .links{
         text-decoration: none;
         color: $font-primary;

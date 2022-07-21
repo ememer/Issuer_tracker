@@ -1,127 +1,97 @@
 @use "../theme/_variables" as *;
 
-.user {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 0.5rem;
-    padding: 1rem 0.8rem;
+.avatar-section {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+  padding: 0 2rem;
+  align-items: flex-start;
 }
 
-.avatar-section {
-   display: flex;
-   justify-content: center;
-    
-    .avatar-group {
-        position: relative;
-        display: inline-block;
-
-    }
-
+.avatar-group {
+  position: relative;
+  display: inline-block;
 }
 
 .avatar {
-    display: block;
-    border-radius: 100%;
-    padding: 0.3rem;
-    max-width: 5.5rem;
-    margin: auto;
+  display: block;
+  border-radius: 100%;
+  padding: 0.3rem;
+  max-width: 5.5rem;
+  margin: auto;
 }
 
 .avatar-setting {
-    position: absolute;
-    top: 0px;
-    right: -10px;
-    width: 2.1rem;
-    border-radius: 15%;
-    color: white;
-    cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  width: 2.1rem;
+  border-radius: 15%;
+  color: white;
+  cursor: pointer;
 }
 
-.user-area {
-    margin: auto;
-    width: 50%;
+.user-box {
+  margin: auto;
+  width: 50%;
 
-    
-    form{
-        display: flex;
-        flex-direction: column;
+  form {
+    display: flex;
+    flex-direction: column;
 
-        @media screen and (min-width: 600px) {
-            width: 70%;
-        }
+    @media screen and (min-width: 600px) {
+      width: 70%;
     }
+  }
 
-    span{
-        font-weight: 700;
-        color: red;
-    }
+  span {
+    font-weight: 700;
+    color: red;
+  }
 
-    label,input{
-        margin: 0.4rem 0;
-        padding: 0.4rem;
-    }
+  label,
+  input {
+    margin: 0.4rem 0;
+    padding: 0.4rem;
+  }
 
-    input {
-        border: none;
-        background: $bg-elements-light;
-        width: 100%;
-        border-radius: 0.2rem;
-    }
-
+  input {
+    border: none;
+    background: $bg-elements-light;
+    width: 100%;
+    border-radius: 0.2rem;
+  }
 }
 
 .form-button {
-    button {
-        background-color: $submit-button;
-        color: $font-primary;
-        font-size: medium;
-        font-weight: 700;
-        text-align: center;
-        width: 100%;
-        border-radius: .5rem;
-        padding: .8rem;
-        margin-top: .4rem;
-    }
+  button {
+    background-color: $submit-button;
+    color: $font-primary;
+    font-size: medium;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    margin-top: 0.4rem;
+  }
 }
 
 .sizes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-
-    button{
-        display: inline-block;
-        font-weight: 700;
-        cursor: pointer;
-        background: $base-button;
-        margin:  0 .8rem;
-        border-radius: 0.5rem;
-        min-height: 2.6rem;
-        min-width: 5.5rem;
-    }
-    
-    button:first-child {
-        font-size: 1.2rem;
-    }
-
-    button:last-child {
-        font-size: 1.6rem;
-        
-    }
+  padding: 2rem 0rem;
+  justify-content: center;
+  button {
+    margin: 0.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: $base-button;
+    border-radius: 0.5rem;
+    min-height: 2.6rem;
+  }
 }
 
-.facilitation {
-    margin: 2rem 0;
-    padding: .4rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.headline-size { 
-    text-align: center;
-    margin: 1.5rem 0;
-    width: 100%;
+.headline-size {
+  text-align: center;
+  margin: 1.5rem 0;
+  width: 100%;
 }
