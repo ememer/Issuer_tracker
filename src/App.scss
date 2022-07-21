@@ -2,16 +2,15 @@
 @use "./sass/configuration/_googleFont";
 @use "./sass/configuration/_elements";
 
-
 @import "~bootstrap/scss/bootstrap";
 
-*, html {
-    font-family: 'Roboto', sans-serif;
-    font-size: 10px;
-    box-sizing: border-box;
-
+*,
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  box-sizing: border-box;
 }
 
 body {
-    background: #F7F7F7;
+  background: #f7f7f7;
 }

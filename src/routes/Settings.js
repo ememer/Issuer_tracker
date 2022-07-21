@@ -22,7 +22,7 @@ const Settings = () => {
   const { userName, setUserName, avatar, avatarLists } =
     useContext(UserContext);
   const [uiSize, setUiSize] = useState(1);
-  const [avatarMenu, setAvatarMenu] = useState(false);
+  const [avatarMenu, setAvatarMenu] = useState(true);
   const [userNameInput, setUserNameInput] = useState(userName);
 
   useEffect(() => {
