@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../context/UserContext";
-import { displayAvatar } from "../shared/utlis/displayAvatar";
+import { displayAvatar } from "../shared/utils/displayAvatar";
 
 import AvatarImage from "./AvatarImage";
 

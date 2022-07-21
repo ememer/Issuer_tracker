@@ -19,33 +19,33 @@ const Layout = ({ children }) => {
       </Helmet>
       <div className="light">
         <div className="container">
-          <header className="grid-row header">
-            <div className="grid-col-4 logo-box">
-              <span className="logo">Issues Tracker</span>
+          <header className="row header">
+            <span className="col-5 col-sm-3 logo">Issues Tracker</span>
+            <div className="col-1 button-menu-box">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className=" button-menu"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </div>
-            <div className="grid-col-8 links-xl">
-              <ul className="grid-row">
+            <nav className="col-sm-7 nav-links">
+              <ul className="row">
                 {links.map((link, index) => (
-                  <li className="grid-col-4" title={link.describe} key={index}>
+                  <li className="col-sm-auto" title={link.describe} key={index}>
                     <Link className="links" to={link.url}>
                       {link.text}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="button-menu"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            {isMenuOpen && <MobileMenu links={links} />}
+            </nav>
           </header>
         </div>
       </div>
+      {isMenuOpen && <MobileMenu links={links} />}
       <main className="container">{children}</main>
     </>
   );

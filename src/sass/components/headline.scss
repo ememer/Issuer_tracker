@@ -1,0 +1,30 @@
+@use "../theme/__variables.scss" as *;
+
+.level-1 {
+    font-size: 2.5rem;
+}
+.level-2 {
+    font-size: 2rem;
+}
+.level-3 {
+    font-size: 1.5rem;
+
+}
+.level-4 {
+    font-size: 1rem;
+
+}
+
+
+
+.headline {
+    display: block;
+    color: $font-primary;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+}
+
+
+.headline-bg {
+    background: linear-gradient(45deg,  $base-bg 20%, $accent-bg);
+}
