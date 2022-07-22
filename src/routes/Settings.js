@@ -22,7 +22,7 @@ const Settings = () => {
   const { userName, setUserName, avatar, avatarLists } =
     useContext(UserContext);
   const [uiSize, setUiSize] = useState(1);
-  const [avatarMenu, setAvatarMenu] = useState(true);
+  const [avatarMenu, setAvatarMenu] = useState(false);
   const [userNameInput, setUserNameInput] = useState(userName);
 
   useEffect(() => {
@@ -45,6 +45,12 @@ const Settings = () => {
   return (
     <Layout>
       {avatarMenu && <AvatarPopup onClose={() => setAvatarMenu(false)} />}
+      <Headline
+        level={1}
+        headlineBG={false}
+        className="col-12 main-headline"
+        title={`Witaj ${userName}!`}
+      />
       <div className="row">
         <div className="col-lg-6">
           <Headline

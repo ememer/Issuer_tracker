@@ -28,10 +28,10 @@ const AvatarPopup = ({ onClose }) => {
               }}
               key={avatar.id}
               className="col-12 col-sm-6 col-md-4"
-              id={avatar.id}
+              id={`${avatar.id}`}
             >
               <AvatarImage
-                id={avatar.id}
+                id={`${avatar.id}`}
                 photoAlt="User-Avatar"
                 className="avatar-choose"
                 src={avatar.url}

@@ -1,0 +1,49 @@
+@use "../theme/_variables" as *;
+
+.issues-headline {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.issues-main {
+  height: 100vh;
+  background-color: $bg-elements-light;
+  border-radius: 5px 5px 0 0;
+  padding: 1rem;
+  box-shadow: 1px 2px 5px rgba(#000, 0.2);
+
+  thead,
+  tbody {
+    text-align: center;
+    tr {
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem 0rem;
+      border-bottom: 1px dashed rgba($base-accents, 0.4);
+      @media screen and (min-width: 1024px) {
+        justify-content: flex-start;
+        margin: 0 2rem;
+      }
+    }
+    th {
+      border: 1px solid rgba($base-accents, 0.3);
+      border-right: 1px solid $base-accents;
+      &:last-child,
+      &:first-child {
+        padding: 0 1.5rem;
+      }
+    }
+  }
+}
+
+tbody {
+  &:nth-child(odd) {
+    background: rgba($accent-bg, 0.5);
+  }
+}
+
+.mobile-hidden {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}

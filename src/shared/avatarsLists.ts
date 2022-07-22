@@ -1,6 +1,6 @@
 interface List {
   id: number;
-  url: () => void;
+  url: string;
   border: string;
 }
 

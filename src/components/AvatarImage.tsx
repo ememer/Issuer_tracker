@@ -1,8 +1,8 @@
 type Props = {
-  id?: string;
+  id: string;
   className?: string;
-  src?: string;
-  style?: string;
+  src: string;
+  style: string;
   photoAlt?: string;
 };
 

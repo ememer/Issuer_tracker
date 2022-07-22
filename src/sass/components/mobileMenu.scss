@@ -1,63 +1,59 @@
 @use "../theme/_variables" as *;
 
-.mobile-nav{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-    min-width: 50%;
-    min-height: 100vh;
-    border-radius: 0 1.5rem 1.5rem 0;
-    left: 0;
-    top: 0;
-    background: linear-gradient(45deg, $accent-bg 40%, $base-bg 60%);
-    @media screen and (min-width: 600px) {
-        display: none;
-    }
+.mobile-nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  min-width: 50%;
+  min-height: 100vh;
+  border-radius: 0 1.5rem 1.5rem 0;
+  left: 0;
+  top: 0;
+  background: linear-gradient(45deg, $accent-bg 40%, $base-bg 60%);
+  @media screen and (min-width: 600px) {
+    display: none;
+  }
 
-    h1{
-        width: 100%;
-    }
+  h1 {
+    width: 100%;
+  }
 
-    ul{
-
-        width: 90%;
-        margin-top: auto;
-        height: 40vh;
-        li{
-            padding: 2rem;
-            text-align: center;
-            line-height: 4rem;
-            font-size: 2rem;
-        }
+  ul {
+    width: 90%;
+    margin-top: auto;
+    height: 40vh;
+    li {
+      padding: 2rem;
+      text-align: center;
+      line-height: 4rem;
+      font-size: 2rem;
     }
+  }
 }
 
-
 .nav-link {
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
 }
 
 .avatar-section-menu {
-    margin: 2rem;
+  margin: 2rem;
 
-    h2{
-        color: $font-primary;
-        font-weight: 700;
-        font-size: 2rem;
-        margin: 1.2rem 0;
-        text-align: center;
-    }
+  h2 {
+    color: $font-primary;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 1.2rem 0;
+    text-align: center;
+  }
 }
 
-
 .mobile-avatar {
-        display: block;
-        border-radius: 100%;
-        padding: 0.3rem;
-        max-width: 6rem;
-        margin: auto;
-
+  display: block;
+  border-radius: 100%;
+  padding: 0.3rem;
+  max-width: 6rem;
+  margin: auto;
 }
