@@ -24,7 +24,7 @@ const Issue = ({ numberID, responsible, issue, urgent, status }: Props) => {
         <td className="col-1  mobile-hidden">
           <div>{urgent}</div>
         </td>
-        <td className="col-1 mobile-hidden">
+        <td className="col-2">
           <div>{status}</div>
         </td>
         <td className="col-2 col-lg-1 mobile-hidden">

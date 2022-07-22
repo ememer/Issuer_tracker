@@ -25,6 +25,15 @@
         margin: 0 2rem;
       }
     }
+
+    th,
+    td {
+      padding: 0;
+      p {
+        margin: 0;
+      }
+    }
+
     th {
       border: 1px solid rgba($base-accents, 0.3);
       border-right: 1px solid $base-accents;
@@ -46,4 +55,45 @@ tbody {
   @media screen and (max-width: 800px) {
     display: none;
   }
+}
+
+///
+///
+
+form {
+  width: 100%;
+  select,
+  textarea {
+    width: 100%;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+  button {
+    background: $submit-button;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    color: $font-primary;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
+
+label {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  font-weight: 500;
+  span {
+    color: red;
+  }
+}
+
+.error-msg {
+  color: $font-primary;
+  padding: 2rem;
+  margin: 1rem 0;
+  text-align: center;
+  border-radius: 2px;
+  background: rgb(238, 75, 75);
+  font-weight: 700;
 }

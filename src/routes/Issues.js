@@ -6,18 +6,16 @@ import Layout from "../components/Layout";
 
 import "../sass/components/issues.scss";
 
+const URGENT_STATUSES = ["Wybierz", "Normalny", "Średni", "Wysoki"];
 const tempResp = ["Wybierz", "Leorem1", "Leorem2", "Leorem3"];
 
-const URGENT_STATUSES = ["Wybierz", "Normalny", "Średni", "Wysoki"];
 const TASKS_STATUS = ["Wybierz", "Otwarty", "Zamknięty"];
 
 const Issues = () => {
   const [issuesArray, setIssuesArray] = useState([]);
-  const [urgentStatus, setUrgentStatus] = useState(
-    URGENT_STATUSES[0] ?? "Wybierz"
-  );
-  const [taskStatus, setTaskStatus] = useState(TASKS_STATUS[0] ?? "Wybierz");
-  const [responsible, setResponsible] = useState(tempResp[0] ?? "Wybierz");
+  const [urgentStatus, setUrgentStatus] = useState(URGENT_STATUSES[0] ?? "");
+  const [taskStatus, setTaskStatus] = useState(TASKS_STATUS[0] ?? "");
+  const [responsible, setResponsible] = useState(tempResp[0] ?? "");
   const [issueDescription, setIssueDescription] = useState("");
 
   function IssueTemplate(number, responsible, issue, urgent, status) {
@@ -28,9 +26,34 @@ const Issues = () => {
     this.status = status;
   }
 
+  const validateForm = (person, priority, description, status) => {
+    if (
+      person === "Wybierz" ||
+      priority === "Wybierz" ||
+      status === "Wybierz"
+    ) {
+      return { error: "Pola z gwiazdką są wymagane" };
+    }
+
+    if (description?.length <= 5) {
+      return {
+        description: "Opis problemu powinien zawierać minimum 5 znaków",
+      };
+    }
+    return {};
+  };
+
+  const validateResult = validateForm(
+    responsible,
+    urgentStatus,
+    issueDescription,
+    taskStatus
+  );
+
+  const isValid = Object.keys(validateResult).length === 0;
+
   const createNewIssue = (e) => {
     e.preventDefault();
-
     setIssuesArray((prevState) => [
       ...prevState,
       new IssueTemplate(
@@ -43,45 +66,67 @@ const Issues = () => {
     ]);
   };
 
+  console.log(validateResult);
+
   return (
     <Layout>
       <div>
-        <form>
-          <select
-            value={responsible}
-            onChange={(e) => setResponsible(e.target.value)}
-          >
-            {tempResp.map((resp) => (
-              <option key={resp} value={resp}>
-                {resp}
-              </option>
-            ))}
-          </select>
-          <textarea
-            value={issueDescription}
-            onChange={(e) => setIssueDescription(e.target.value)}
-          />
-          <select
-            value={urgentStatus}
-            onChange={(e) => setUrgentStatus(e.target.value)}
-          >
-            {URGENT_STATUSES.map((urgent) => (
-              <option key={urgent} value={urgent}>
-                {urgent}
-              </option>
-            ))}
-          </select>
-          <select
-            value={taskStatus}
-            onChange={(e) => setTaskStatus(e.target.value)}
-          >
-            {TASKS_STATUS.map((status) => (
-              <option key={status} value={status}>
-                {status}
-              </option>
-            ))}
-          </select>
-          <button onClick={(e) => createNewIssue(e)}>Zapisz</button>
+        {validateResult?.error ||
+          (validateResult?.description && (
+            <div className="col-12 col-md-6 error-msg">
+              {validateResult.error} {validateResult.description}
+            </div>
+          ))}
+        <form onSubmit={(e) => createNewIssue(e)} className="col-12 col-md-6">
+          <label>
+            Odpowiedzialny <span>*</span>
+            <select
+              value={responsible}
+              onChange={(e) => setResponsible(e.target.value)}
+            >
+              {tempResp.map((resp) => (
+                <option key={resp} value={resp}>
+                  {resp}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Opis problemu <span>*</span>
+            <textarea
+              rows="5"
+              value={issueDescription}
+              onChange={(e) => setIssueDescription(e.target.value)}
+            />
+          </label>
+          <label>
+            Ważność <span>*</span>
+            <select
+              value={urgentStatus}
+              onChange={(e) => setUrgentStatus(e.target.value)}
+            >
+              {URGENT_STATUSES.map((urgent) => (
+                <option key={urgent} value={urgent}>
+                  {urgent}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Status <span>*</span>
+            <select
+              value={taskStatus}
+              onChange={(e) => setTaskStatus(e.target.value)}
+            >
+              {TASKS_STATUS.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <button disabled={!isValid}>Zapisz</button>
         </form>
       </div>
       <Headline
@@ -97,9 +142,9 @@ const Issues = () => {
               <tr className="row">
                 <th className="col-2 col-md-1 col-lg-1">Lp.</th>
                 <th className="col-4  col-md-3 col-lg-2">Odpowiedzialny</th>
-                <th className="col-4 col-md-3 col-lg-3">Problem</th>
+                <th className="col-4 col-md-3 col-lg-3 ">Problem</th>
                 <th className="col-1  mobile-hidden">Ważność</th>
-                <th className="col-1 mobile-hidden">Status</th>
+                <th className="col-2 ">Status</th>
                 <th className="col-2 col-lg-1 mobile-hidden">Zaznacz</th>
               </tr>
             </thead>
