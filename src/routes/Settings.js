@@ -7,6 +7,7 @@ import AvatarImage from "../components/AvatarImage";
 import AvatarPopup from "../components/AvatarPopup";
 import Headline from "../components/Headline";
 import Layout from "../components/Layout";
+import { PersonsContext } from "../context/PersonsContext";
 import { UserContext } from "../context/UserContext";
 import { displayAvatar } from "../shared/utils/displayAvatar";
 
@@ -21,9 +22,16 @@ const FONT_SIZES = {
 const Settings = () => {
   const { userName, setUserName, avatar, avatarLists } =
     useContext(UserContext);
+  const { personsArray, setPersonsArray } = useContext(PersonsContext);
+  const [person, setPerson] = useState("");
   const [uiSize, setUiSize] = useState(1);
   const [avatarMenu, setAvatarMenu] = useState(false);
+  const [isChecked, setIsChecked] = useState([]);
   const [userNameInput, setUserNameInput] = useState(userName);
+
+  console.log(isChecked);
+
+  const filteredPersons = personsArray.filter((person) => person !== "Wybierz");
 
   useEffect(() => {
     const HTMLElement = document.querySelector("html");
@@ -41,6 +49,24 @@ const Settings = () => {
     setUserName(userNameInput);
     setUserNameInput("");
   };
+
+  const onPersonsUpdate = (e) => {
+    e.preventDefault();
+    setPersonsArray((prevState) => [prevState[0], ...filteredPersons, person]);
+    setPerson("");
+  };
+
+  const handleCheckBox = (e) => {
+    if (!isChecked.includes(e.target.name)) {
+      setIsChecked((prevState) => [...prevState, e.target.name]);
+    } else {
+      setIsChecked([...isChecked.filter((item) => item !== e.target.name)]);
+    }
+  };
+
+  // const handleRemoveSelected = () =>{
+  //   const newArray = isChecked.filter((e))
+  // }
 
   return (
     <Layout>
@@ -137,6 +163,49 @@ const Settings = () => {
               </button>
             </div>
           </div>
+        </div>
+      </div>
+      <Headline
+        level={2}
+        headlineBG={true}
+        title="Osoby odpowiedzialne"
+        className="col-12 persons-headline"
+      />
+      <div className="row">
+        <div className="col-12 col-md-6 settings-form">
+          <form onSubmit={(e) => onPersonsUpdate(e)}>
+            <label>
+              Wprowadź osobę odpowiedzialną
+              <input
+                onChange={(e) => setPerson(e.target.value)}
+                value={person}
+                type="text"
+              />
+            </label>
+            <button disabled={!person}>Dodaj</button>
+          </form>
+        </div>
+        <div className="col-12 col-md-6 persons">
+          <button onClick={() => setPersonsArray(["Wybierz"])}>
+            Usuń zaznaczone
+          </button>
+          <button onClick={() => setPersonsArray(["Wybierz"])}>
+            Usuń wszystkie
+          </button>
+          <ul>
+            {filteredPersons.map((person, index) => (
+              <li key={`${person}${index}`}>
+                <input
+                  name={person}
+                  checked={isChecked.includes(person)}
+                  onChange={(e) => handleCheckBox(e)}
+                  id={index + 1}
+                  type="checkbox"
+                />
+                {person}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Layout>

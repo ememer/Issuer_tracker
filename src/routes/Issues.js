@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,24 +7,27 @@ import clsx from "clsx";
 import Headline from "../components/Headline";
 import Issue from "../components/Issue";
 import Layout from "../components/Layout";
+import { PersonsContext } from "../context/PersonsContext";
 
 import "../sass/components/issues.scss";
 
 const URGENT_STATUSES = ["Wybierz", "Normalny", "Średni", "Wysoki"];
-const tempResp = ["Wybierz", "Leorem1", "Leorem2", "Leorem3"];
 
 const TASKS_STATUS = ["Wybierz", "Otwarty", "Zamknięty"];
 
-const EMPTY_FORM = {
-  responsible: tempResp[0],
-  urgent: URGENT_STATUSES[0],
-  description: "",
-  status: TASKS_STATUS[0],
-};
-
 const Issues = () => {
+  const { personsArray } = useContext(PersonsContext);
+
+  const EMPTY_FORM = {
+    responsible: personsArray[0],
+    urgent: URGENT_STATUSES[0],
+    description: "",
+    status: TASKS_STATUS[0],
+  };
+
   const [formState, setFormState] = useState(EMPTY_FORM);
   const [issuesArray, setIssuesArray] = useState([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   function IssueTemplate(number, responsible, issue, urgent, status) {
     this.number = number;
@@ -77,102 +80,122 @@ const Issues = () => {
       (item) => item.number !== +e.target.id
     );
 
-    const updateNumber = newIssueArray.map((item, index) => ({
+    const updatedNumber = newIssueArray.map((item, index) => ({
       ...item,
       number: index + 1,
     }));
 
-    setIssuesArray(updateNumber);
+    setIssuesArray(updatedNumber);
   };
 
   return (
     <Layout>
-      <div className="issue-form">
-        <form onSubmit={(e) => createNewIssue(e)} className="col-12 col-md-6">
-          <label>
-            Odpowiedzialny <span>*</span>
-            <select
-              value={formState.responsible}
-              onChange={(e) =>
-                setFormState((prevState) => ({
-                  ...prevState,
-                  responsible: e.target.value,
-                }))
-              }
-            >
-              {tempResp.map((resp) => (
-                <option key={resp} value={resp}>
-                  {resp}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Opis problemu <span>*</span>
-            <textarea
-              rows="5"
-              value={formState.description}
-              onChange={(e) =>
-                setFormState((prevState) => ({
-                  ...prevState,
-                  description: e.target.value,
-                }))
-              }
-            />
-            {validateResult?.description && (
-              <div className="col-12  warn-msg">
-                {validateResult.description}
-              </div>
-            )}
-          </label>
-          <label>
-            Ważność <span>*</span>
-            <select
-              value={urgent}
-              onChange={(e) =>
-                setFormState((prevState) => ({
-                  ...prevState,
-                  urgent: e.target.value,
-                }))
-              }
-            >
-              {URGENT_STATUSES.map((urgent) => (
-                <option key={urgent} value={urgent}>
-                  {urgent}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Status <span>*</span>
-            <select
-              value={status}
-              onChange={(e) =>
-                setFormState((prevState) => ({
-                  ...prevState,
-                  status: e.target.value,
-                }))
-              }
-            >
-              {TASKS_STATUS.map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
-          </label>
-
+      {isFormOpen ? (
+        <div className="issue-form">
           <button
-            className={clsx(!isValid && "disable", isValid && "active")}
-            disabled={!isValid}
+            onClick={() => {
+              setIsFormOpen(false);
+              setFormState(EMPTY_FORM);
+            }}
+            className="close-form col-12"
           >
-            Zapisz
+            Zamknij
           </button>
-          {validateResult?.error && (
-            <div className="col-12  info-msg">{validateResult.error}</div>
-          )}
-        </form>
-      </div>
+
+          <form onSubmit={(e) => createNewIssue(e)} className="col-12 col-md-6">
+            <label>
+              Odpowiedzialny <span>*</span>
+              <select
+                value={formState.responsible}
+                onChange={(e) =>
+                  setFormState((prevState) => ({
+                    ...prevState,
+                    responsible: e.target.value,
+                  }))
+                }
+              >
+                {personsArray.map((person) => (
+                  <option key={person} value={person}>
+                    {person}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Opis problemu <span>*</span>
+              <textarea
+                rows="5"
+                value={formState.description}
+                onChange={(e) =>
+                  setFormState((prevState) => ({
+                    ...prevState,
+                    description: e.target.value,
+                  }))
+                }
+              />
+              {validateResult?.description && (
+                <div className="col-12  warn-msg">
+                  {validateResult.description}
+                </div>
+              )}
+            </label>
+            <label>
+              Ważność <span>*</span>
+              <select
+                value={urgent}
+                onChange={(e) =>
+                  setFormState((prevState) => ({
+                    ...prevState,
+                    urgent: e.target.value,
+                  }))
+                }
+              >
+                {URGENT_STATUSES.map((urgent) => (
+                  <option key={urgent} value={urgent}>
+                    {urgent}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Status <span>*</span>
+              <select
+                value={status}
+                onChange={(e) =>
+                  setFormState((prevState) => ({
+                    ...prevState,
+                    status: e.target.value,
+                  }))
+                }
+              >
+                {TASKS_STATUS.map((status) => (
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <button
+              className={clsx(!isValid && "disable", isValid && "active")}
+              disabled={!isValid}
+            >
+              Zapisz
+            </button>
+            {validateResult?.error && (
+              <div className="col-12  info-msg">{validateResult.error}</div>
+            )}
+          </form>
+        </div>
+      ) : (
+        <button
+          className="col-12 open-form"
+          onClick={() => setIsFormOpen(true)}
+        >
+          Otwórz formularz
+        </button>
+      )}
+
       <Headline
         level={1}
         title="Problemy"

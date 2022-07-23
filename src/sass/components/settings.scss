@@ -100,3 +100,50 @@
   text-align: center;
   color: $font-secondary;
 }
+
+.persons {
+  ul {
+    li {
+      display: flex;
+      justify-content: flex-start;
+      line-height: 2rem;
+      padding: 1.2rem;
+      input {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 2rem;
+      }
+    }
+  }
+  button {
+    background: $base-button;
+    border-radius: 2px;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1.2rem 0;
+  }
+}
+
+.settings-form {
+  form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    label {
+      padding: 1.5rem;
+    }
+    input {
+      margin: 1rem 0rem;
+      padding: 0.5rem 2rem;
+      width: 100%;
+    }
+    button {
+      background: $base-button;
+      border-radius: 2px;
+    }
+  }
+}
+
+.persons-headline {
+  text-align: center;
+}
