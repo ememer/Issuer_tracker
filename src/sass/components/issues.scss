@@ -88,12 +88,19 @@ label {
   }
 }
 
-.error-msg {
-  color: $font-primary;
-  padding: 2rem;
+.info-msg {
+  color: $font-secondary;
+  padding: 0.4rem;
   margin: 1rem 0;
   text-align: center;
   border-radius: 2px;
-  background: rgb(238, 75, 75);
-  font-weight: 700;
+  background: rgb(92, 175, 252);
+}
+.warn-msg {
+  color: $font-secondary;
+  padding: 0.4rem;
+  margin: 1rem 0;
+  text-align: center;
+  border-radius: 2px;
+  background: rgb(252, 204, 92);
 }

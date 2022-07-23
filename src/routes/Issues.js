@@ -66,17 +66,9 @@ const Issues = () => {
     ]);
   };
 
-  console.log(validateResult);
-
   return (
     <Layout>
       <div>
-        {validateResult?.error ||
-          (validateResult?.description && (
-            <div className="col-12 col-md-6 error-msg">
-              {validateResult.error} {validateResult.description}
-            </div>
-          ))}
         <form onSubmit={(e) => createNewIssue(e)} className="col-12 col-md-6">
           <label>
             Odpowiedzialny <span>*</span>
@@ -98,6 +90,11 @@ const Issues = () => {
               value={issueDescription}
               onChange={(e) => setIssueDescription(e.target.value)}
             />
+            {validateResult?.description && (
+              <div className="col-12  warn-msg">
+                {validateResult.description}
+              </div>
+            )}
           </label>
           <label>
             Ważność <span>*</span>
@@ -127,6 +124,9 @@ const Issues = () => {
           </label>
 
           <button disabled={!isValid}>Zapisz</button>
+          {validateResult?.error && (
+            <div className="col-12  info-msg">{validateResult.error}</div>
+          )}
         </form>
       </div>
       <Headline
