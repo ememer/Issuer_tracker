@@ -1,4 +1,10 @@
-export const links = [
+interface Links {
+  text: string;
+  url: string;
+  describe: string;
+}
+
+export const links: Links[] = [
   {
     text: "Home",
     url: "/",

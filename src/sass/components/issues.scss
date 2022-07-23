@@ -70,12 +70,17 @@ form {
     border-radius: 6px;
   }
   button {
-    background: $submit-button;
     width: 100%;
     padding: 0.5rem 2rem;
     color: $font-primary;
     font-size: 1.5rem;
     font-weight: 300;
+  }
+  .active {
+    background: $submit-button;
+  }
+  .disable {
+    background: $submit-button-disable;
   }
 }
 
@@ -103,4 +108,10 @@ label {
   text-align: center;
   border-radius: 2px;
   background: rgb(252, 204, 92);
+}
+
+.issue-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

@@ -6,9 +6,17 @@ type Props = {
   issue: string;
   urgent: string;
   status: string;
+  remove: (e: any) => void;
 };
 
-const Issue = ({ numberID, responsible, issue, urgent, status }: Props) => {
+const Issue = ({
+  numberID,
+  responsible,
+  issue,
+  urgent,
+  status,
+  remove,
+}: Props) => {
   return (
     <tbody>
       <tr className="row">
@@ -28,7 +36,9 @@ const Issue = ({ numberID, responsible, issue, urgent, status }: Props) => {
           <div>{status}</div>
         </td>
         <td className="col-2 col-lg-1 mobile-hidden">
-          <input id={`${numberID}`} type="checkbox" />
+          <button id={`${numberID}`} onClick={(e) => remove(e)}>
+            Usuń
+          </button>
         </td>
       </tr>
     </tbody>
