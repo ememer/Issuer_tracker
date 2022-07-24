@@ -115,12 +115,15 @@
       }
     }
   }
+}
+.persons-buttons {
+  display: flex;
+  justify-content: center;
   button {
     background: $base-button;
     border-radius: 2px;
-    width: 100%;
     padding: 0.5rem;
-    margin: 1.2rem 0;
+    margin: 1.2rem 0.5rem;
   }
 }
 

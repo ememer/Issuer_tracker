@@ -29,8 +29,6 @@ const Settings = () => {
   const [isChecked, setIsChecked] = useState([]);
   const [userNameInput, setUserNameInput] = useState(userName);
 
-  console.log(isChecked);
-
   const filteredPersons = personsArray.filter((person) => person !== "Wybierz");
 
   useEffect(() => {
@@ -64,9 +62,12 @@ const Settings = () => {
     }
   };
 
-  // const handleRemoveSelected = () =>{
-  //   const newArray = isChecked.filter((e))
-  // }
+  const handleRemoveSelected = () => {
+    const newArray = personsArray.filter(
+      (person) => !isChecked.includes(person)
+    );
+    setPersonsArray(["Wybierz", ...newArray]);
+  };
 
   return (
     <Layout>
@@ -186,12 +187,17 @@ const Settings = () => {
           </form>
         </div>
         <div className="col-12 col-md-6 persons">
-          <button onClick={() => setPersonsArray(["Wybierz"])}>
-            Usuń zaznaczone
-          </button>
-          <button onClick={() => setPersonsArray(["Wybierz"])}>
-            Usuń wszystkie
-          </button>
+          <div className="persons-buttons">
+            <button className="col-5" onClick={() => handleRemoveSelected()}>
+              Usuń zaznaczone
+            </button>
+            <button
+              className="col-5"
+              onClick={() => setPersonsArray(["Wybierz"])}
+            >
+              Usuń wszystkie
+            </button>
+          </div>
           <ul>
             {filteredPersons.map((person, index) => (
               <li key={`${person}${index}`}>
