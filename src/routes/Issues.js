@@ -11,6 +11,34 @@ import { PersonsContext } from "../context/PersonsContext";
 
 import "../sass/components/issues.scss";
 
+const testIssue = {
+  number: 1,
+  responsible: "responsible1",
+  issue: "issue",
+  urgent: "urgent",
+  status: "status",
+};
+const testIssue2 = {
+  number: 2,
+  responsible: "responsible2",
+  issue: "issue",
+  urgent: "urgent",
+  status: "status",
+};
+const testIssue3 = {
+  number: 3,
+  responsible: "responsible3",
+  issue: "issue",
+  urgent: "urgent",
+  status: "status",
+};
+const testIssue4 = {
+  responsible: "responsible4",
+  issue: "issue4",
+  urgent: "urgent4",
+  status: "status4",
+};
+
 const URGENT_STATUSES = ["Wybierz", "Normalny", "Średni", "Wysoki"];
 
 const TASKS_STATUS = ["Wybierz", "Otwarty", "Zamknięty"];
@@ -26,7 +54,11 @@ const Issues = () => {
   };
 
   const [formState, setFormState] = useState(EMPTY_FORM);
-  const [issuesArray, setIssuesArray] = useState([]);
+  const [issuesArray, setIssuesArray] = useState([
+    testIssue,
+    testIssue2,
+    testIssue3,
+  ]);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   function IssueTemplate(number, responsible, issue, urgent, status) {
@@ -86,6 +118,25 @@ const Issues = () => {
     }));
 
     setIssuesArray(updatedNumber);
+  };
+
+  const findIssueToEdit = (e) => {
+    const searchElement = issuesArray.filter(
+      (element) => element.number === +e.target.id
+    );
+    const index = issuesArray.indexOf(searchElement[0]);
+
+    setIssuesArray((prevState) =>
+      prevState.map((issue, idx) => {
+        if (idx === index) {
+          return {
+            ...issue,
+            ...testIssue4,
+          };
+        }
+        return issue;
+      })
+    );
   };
 
   return (
@@ -226,6 +277,7 @@ const Issues = () => {
                 urgent={issue.urgent}
                 status={issue.status}
                 remove={removeIssueFromList}
+                edit={findIssueToEdit}
               />
             ))}
           </table>

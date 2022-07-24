@@ -7,6 +7,7 @@ type Props = {
   urgent: string;
   status: string;
   remove: (e: any) => void;
+  edit: (e: any) => void;
 };
 
 const Issue = ({
@@ -16,6 +17,7 @@ const Issue = ({
   urgent,
   status,
   remove,
+  edit,
 }: Props) => {
   return (
     <tbody>
@@ -38,6 +40,11 @@ const Issue = ({
         <td className="col-2 col-lg-1 mobile-hidden">
           <button id={`${numberID}`} onClick={(e) => remove(e)}>
             Usuń
+          </button>
+        </td>
+        <td className="col-2 col-lg-1 mobile-hidden">
+          <button id={`${numberID}`} onClick={(e) => edit(e)}>
+            Edytuj
           </button>
         </td>
       </tr>
