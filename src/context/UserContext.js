@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import { avatarLists } from "../shared/avatarsLists";
 
 const DEFAULT_USER = {
-  DEFAULT_NAME: "",
+  DEFAULT_NAME: "Użytkownik",
   DEFAULT_AVATAR: 1,
 };
 

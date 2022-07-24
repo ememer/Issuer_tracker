@@ -75,3 +75,24 @@
     margin: 0.2rem 0rem;
   }
 }
+
+.avatar-nav-section {
+  display: none;
+  @media screen and(min-width: 1000px) {
+    display: block;
+  }
+}
+.avatar-nav {
+  display: block;
+  border-radius: 100%;
+  padding: 0.3rem;
+  max-width: 6rem;
+  margin: auto;
+}
+
+.nav-name {
+  display: inline-block;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+}

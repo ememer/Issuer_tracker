@@ -66,7 +66,7 @@ const Settings = () => {
     const newArray = personsArray.filter(
       (person) => !isChecked.includes(person)
     );
-    setPersonsArray(["Wybierz", ...newArray]);
+    setPersonsArray(newArray);
   };
 
   return (
@@ -116,7 +116,7 @@ const Settings = () => {
                   onChange={(e) => setUserNameInput(e.target.value)}
                 />
               </form>
-              {userNameInput !== "" && userNameInput.length >= 3 && (
+              {userNameInput !== "Użytkownik" && userNameInput.length >= 3 && (
                 <div className="form-button">
                   <button onClick={(e) => setNameOfUser(e)}>Ustaw</button>
                 </div>
