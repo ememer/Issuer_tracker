@@ -150,3 +150,12 @@
 .persons-headline {
   text-align: center;
 }
+
+.warn-msg {
+  color: $font-secondary;
+  padding: 0.4rem;
+  margin: 1rem 0;
+  text-align: center;
+  border-radius: 2px;
+  background: rgb(252, 204, 92);
+}

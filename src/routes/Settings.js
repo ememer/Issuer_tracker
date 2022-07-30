@@ -28,6 +28,7 @@ const Settings = () => {
   const [avatarMenu, setAvatarMenu] = useState(false);
   const [isChecked, setIsChecked] = useState([]);
   const [userNameInput, setUserNameInput] = useState(userName);
+  const [personError, setPersonError] = useState(false);
 
   const filteredPersons = personsArray.filter((person) => person !== "Wybierz");
 
@@ -50,6 +51,14 @@ const Settings = () => {
 
   const onPersonsUpdate = (e) => {
     e.preventDefault();
+    if (personsArray.includes(person)) {
+      setPerson("");
+      setPersonError(true);
+      setTimeout(() => {
+        setPersonError(false);
+      }, 4000);
+      return;
+    }
     setPersonsArray((prevState) => [prevState[0], ...filteredPersons, person]);
     setPerson("");
   };
@@ -177,12 +186,18 @@ const Settings = () => {
           <form onSubmit={(e) => onPersonsUpdate(e)}>
             <label>
               Wprowadź osobę odpowiedzialną
+              {personError && (
+                <div className="warn-msg col-12">
+                  Podana osoba już została dodana
+                </div>
+              )}
               <input
                 onChange={(e) => setPerson(e.target.value)}
                 value={person}
                 type="text"
               />
             </label>
+
             <button disabled={!person}>Dodaj</button>
           </form>
         </div>

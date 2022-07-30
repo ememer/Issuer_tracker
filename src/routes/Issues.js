@@ -60,6 +60,7 @@ const Issues = () => {
     testIssue3,
   ]);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
 
   function IssueTemplate(number, responsible, issue, urgent, status) {
     this.number = number;
@@ -120,15 +121,19 @@ const Issues = () => {
     setIssuesArray(updatedNumber);
   };
 
-  const findIssueToEdit = (e) => {
+  const findIssueToEdit = async (e) => {
     const searchElement = issuesArray.filter(
       (element) => element.number === +e.target.id
     );
     const index = issuesArray.indexOf(searchElement[0]);
+    setSelectedIndex(index);
+    console.log("TEST");
+  };
 
+  const updateChanges = () => {
     setIssuesArray((prevState) =>
       prevState.map((issue, idx) => {
-        if (idx === index) {
+        if (idx === selectedIndex) {
           return {
             ...issue,
             ...testIssue4,
@@ -278,6 +283,7 @@ const Issues = () => {
                 status={issue.status}
                 remove={removeIssueFromList}
                 edit={findIssueToEdit}
+                onSave={updateChanges}
               />
             ))}
           </table>
